@@ -1,0 +1,20 @@
+.addForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item {
+  padding: 8px !important;
+  margin: 8px !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.form-submit {
+  width: 250px;
+}
+
+.preview-image {
+  height: 250px;
+  width: 220px;
+}

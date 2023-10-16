@@ -1,0 +1,12 @@
+.cardDescription {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+}
+
+.mainpage {
+  max-width: calc(100vw-235px) !important;
+  margin: 76px 20px 20px 255px !important;
+}
