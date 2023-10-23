@@ -1,8 +1,16 @@
 import React from "react";
 import Logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Header = () => {
+  
+  const history = useHistory()
+
+  const logout = () => {
+    sessionStorage.clear()
+    history.push('/login')
+  }
+
   return (
     <header className="shadow fixed-top bg-white">
       <nav className="navbar navbar-expand-lg navbar-light p-2">
@@ -197,7 +205,7 @@ const Header = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item p-2" href="/moas/logout">
+                    <a className="dropdown-item p-2" onClick={logout}>
                       Sign out
                     </a>
                   </li>

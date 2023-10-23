@@ -110,6 +110,13 @@ export const SidebarData = [
           },
         ],
       },
+      {
+        title: 'Change Password',
+        path: '/reset-password',
+        icon: 'lock_open',
+        id: 'groups-menu',
+        subMenuItems: []
+      }
     ],
   },
 ];

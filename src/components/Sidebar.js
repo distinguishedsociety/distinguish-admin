@@ -89,6 +89,7 @@ const Sidebar = () => {
                                 className="material-icons me-2"
                                 style={{
                                   fontSize: "20px",
+                                  width: '20px'
                                 }}
                               >
                                 {menuItem.icon}

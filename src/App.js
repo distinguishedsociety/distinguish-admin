@@ -6,7 +6,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { getCurrentUser } from "./services/API/Auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/slices/userSlice";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { Profile } from "./pages/Profile/Profile";
 import { Switch } from "react-router-dom";
 import { Users } from "./pages/Users/Users";
@@ -29,6 +29,10 @@ import { IntroBanner } from "./pages/IntroBanner/IntroBanner";
 import { Coupons } from "./pages/Coupons/Coupons";
 import { AddCoupon } from "./pages/Coupons/AddCoupon";
 import { EditCoupon } from "./pages/Coupons/EditCoupon";
+import PublicRoute from "./components/PublicRoute";
+import Login from "./pages/Auth/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import ForgotPassword from "./pages/Auth/ResetPassword";
 
 
 
@@ -37,44 +41,9 @@ const Sidebar = lazy(() => import("./components/Sidebar"));
 
 function App() {
   const dispatch = useDispatch();
-  // const [isLoading, setLoading] = useState(true);
   const history = useHistory();
-
-  // useEffect(() => {
-  //   async function getUser() {
-  //     const el = document.querySelector(".loader-container");
-  //     var { user, error } = await getCurrentUser();
-  //     if (error) {
-  //       // history.push("/moas/login");
-  //     }
-
-  //     if (user) {
-  //       if (el) {
-  //         el.remove();
-  //         setLoading(!isLoading);
-  //       }
-  //       const cap = [];
-
-  //       Object.values(user.userCapabilitiesStringHashMap).forEach((item) => {
-  //         if (item.isAllowed) {
-  //           cap.push(item.userCapability);
-  //         }
-  //       });
-  //       user = { ...user, cap };
-  //       console.log(user);
-  //       dispatch(setUser(user));
-  //     }
-  //   }
-
-  //   getUser();
-  // }, []);
-
-  // if (isLoading)
-  //   return (
-  //     <div class="loader-container">
-  //       <div class="loader"></div>
-  //     </div>
-  //   );
+  const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem('loggedInUser'));
+  
 
   const LoadingMessage = () => (
     <div className="loader-container">
@@ -82,73 +51,58 @@ function App() {
     </div>
   );
 
+  useEffect(() => {
+
+    return () => {
+      sessionStorage.clear()
+    }
+  })
+
   return (
     <>
       <Suspense fallback={<LoadingMessage />}>
+        {isAuthenticated && <>
         <Header />
+        <Sidebar />
+        </>}
         <Switch>
           <Route>
-            <Sidebar />
-            <Route exact path="/">
-              <Dashboard />
-            </Route>
-            <Route exact path="/users">
-              <Users />
-            </Route>
-            <Route exact path="/orders">
-              <Orders />
-            </Route>
-            <Route exact path="/products">
-              <Products />
-            </Route>
-            <Route exact path="/inventory">
-              <Inventory />
-            </Route>
-            <Route exact path="/add-product">
-              <AddProduct />
-            </Route>
-            <Route exact path="/edit-product/:slug">
-              <EditProduct />
-            </Route>
-            <Route exact path="/coupons">
-              <Coupons />
-            </Route>
-            <Route exact path="/add-coupon">
-              <AddCoupon />
-            </Route>
-            <Route exact path="/edit-coupon/:slug">
-              <EditCoupon />
-            </Route>
-            <Route exact path="/user/orders/:id">
-              <ViewUserOrders />
-            </Route>
-            <Route exact path="/view-order/:id">
-              <ViewOrder />
-            </Route>
-            <Route exact path="/categories">
-              <Category />
-            </Route>
-            <Route exact path="/collections">
-              <Collection />
-            </Route>
-            <Route exact path="/banners">
-              <Banners />
-            </Route>
-            <Route exact path="/add-banner">
-              <AddBanner />
-            </Route>
-            <Route exact path="/blogs">
-              <Blogs />
-            </Route>
-            <Route exact path="/view-blog/:id">
-              <EditBlog />
-            </Route>
-            <Route exact path="/add-blog">
-              <AddBlog />
-            </Route>
-            <Route exact path="/intro-banner">
-              <IntroBanner />
-            </Route>
+        <PublicRoute
+          restricted={true}
+          component={Login}
+          path="/login"
+          exact
+          isAuthenticated={isAuthenticated}
+        />
+        <PublicRoute
+          restricted={true}
+          component={Login}
+          path="/"
+          exact
+          isAuthenticated={isAuthenticated}
+        />
+        <PrivateRoute component={Dashboard} path="/dashboard" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={ForgotPassword} path="/reset-password" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Users} path="/users" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Orders} path="/orders" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Products} path="/products" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Inventory} path="/inventory" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={AddProduct} path="/add-product" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={EditProduct} path="/edit-product/:slug" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Coupons} path="/coupons" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={AddCoupon} path="/add-coupon" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={EditCoupon} path="/edit-coupon/:slug" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={ViewUserOrders} path="/user/orders/:id" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={ViewOrder} path="/view-order/:id" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Category} path="/categories" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Collection} path="/collections" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Banners} path="/banners" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={AddBanner} path="/add-banner" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Blogs} path="/blogs" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={EditBlog} path="/view-blog/:id" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={AddBlog} path="/add-blog" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={IntroBanner} path="/intro-banner" isAuthenticated={isAuthenticated} />
+        
           </Route>
         </Switch>
       </Suspense>
@@ -157,3 +111,4 @@ function App() {
 }
 
 export default App;
+
