@@ -29,7 +29,7 @@ export default function ForgotPassword() {
     }else if(nPass != rPass){
       setLoading(false)
       setShowError('Confirm Password does not match')
-        retrun
+        return
     }else{
         setShowError('')
     }
