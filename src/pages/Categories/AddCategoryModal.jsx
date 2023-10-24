@@ -34,7 +34,7 @@ export default function AddCategoryModal( props ) {
     if (data.name !== "") {
       setIsLoading(true);
       const result = await axios.post(
-        "https://www.thedistinguishedsociety.com/internal/api/admin/category",
+        "https://localhost:9000/internal/api/admin/category",
         { name: data.name }
       );
 

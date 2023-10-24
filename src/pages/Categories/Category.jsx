@@ -69,7 +69,7 @@ export const Category = () => {
     try {
       setIsDeletingLoading(true);
       const result = await axios.delete(
-        "https://www.thedistinguishedsociety.com/internal/api/admin/category/" +
+        "https://localhost:9000/internal/api/admin/category/" +
           id
       );
       console.log(result);

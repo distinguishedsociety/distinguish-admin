@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-const BASE_URL = "https://www.thedistinguishedsociety.com/internal/api";
+const BASE_URL = "https://localhost:9000/internal/api";
 
 export const getUsers = async () => {
   let users;

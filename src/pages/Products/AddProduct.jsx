@@ -71,7 +71,7 @@ export const AddProduct = () => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     const result = await axios.post(
-      "https://www.thedistinguishedsociety.com/internal/api/admin/uploadImage",
+      "https://localhost:9000/internal/api/admin/uploadImage",
       formData
     );
     console.log(result);
