@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
- const BASE_URL = "https://localhost:9000/internal/api";
+ const BASE_URL = "http://18.234.24.104/internal/api";
 //const BASE_URL = "http://localhost:3002"
 
 export const getBlogs = async () => {

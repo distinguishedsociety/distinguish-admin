@@ -96,7 +96,7 @@ export const EditProduct = () => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     const result = await axios.post(
-      "https://localhost:9000/internal/api/admin/uploadImage",
+      "http://18.234.24.104/internal/api/admin/uploadImage",
       formData
     );
     console.log(result);

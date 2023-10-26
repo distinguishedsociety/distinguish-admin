@@ -34,7 +34,7 @@ export default function ForgotPassword() {
         setShowError('')
     }
     const email = sessionStorage.getItem('loggedInUser')
-    const response = await axios.post('https://localhost:9000/internal/api/admin/admin-reset-password', {email: email, cPass: cPass, nPass: nPass})
+    const response = await axios.post('http://18.234.24.104/internal/api/admin/admin-reset-password', {email: email, cPass: cPass, nPass: nPass})
     console.log('response',response)
     if(response && response.data && response.data.status){
         
