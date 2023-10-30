@@ -35,7 +35,7 @@ export default function EditCategoryModal(props) {
     if (data.name !== "") {
       setIsLoading(true);
       const result = await axios.patch(
-        `http://18.234.24.104/internal/api/admin/category/${props.editItem._id}`,
+        `https://api.thedistinguishedsociety.com/internal/api/admin/category/${props.editItem._id}`,
         { name: data.name }
       );
       if (result.status == 200) {

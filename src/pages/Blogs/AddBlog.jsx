@@ -45,7 +45,7 @@ export const AddBlog = () => {
         formData.append("image", e.target.files[0]);
         setLoading(true)
         const result = await axios.post(
-          "http://18.234.24.104/internal/api/admin/uploadImage",
+          "https://api.thedistinguishedsociety.com/internal/api/admin/uploadImage",
           formData
         );
         console.log(result);

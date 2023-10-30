@@ -59,7 +59,7 @@ export const Collection = () => {
     try {
       setIsDeletingLoading(true);
       const result = await axios.delete(
-        "http://18.234.24.104/internal/api/admin/collection/" +
+        "https://api.thedistinguishedsociety.com/internal/api/admin/collection/" +
           id
       );
       console.log(result);

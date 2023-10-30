@@ -32,7 +32,7 @@ export default function AddCollectionModal({ open, handleClose, handleOpen }) {
     if (data.name !== "") {
       setIsLoading(true);
       const result = await axios.post(
-        "http://18.234.24.104/internal/api/admin/collection",
+        "https://api.thedistinguishedsociety.com/internal/api/admin/collection",
         { title: data.title, description: data.description }
       );
 

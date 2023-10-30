@@ -32,7 +32,7 @@ export default function Login(props){
 
     setLoading(true);
     try{
-      const response = await axios.post('http://18.234.24.104/internal/api/admin/admin-login', {email: inputUsername, password: inputPassword})
+      const response = await axios.post('https://api.thedistinguishedsociety.com/internal/api/admin/admin-login', {email: inputUsername, password: inputPassword})
       if(response && response.data && response.data.status){
         const data = response.data.data
         sessionStorage.setItem('loggedInUser', data.email)
