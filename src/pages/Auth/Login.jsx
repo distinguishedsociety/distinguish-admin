@@ -35,7 +35,7 @@ export default function Login(props){
       const response = await axios.post('https://api.thedistinguishedsociety.com/internal/api/admin/admin-login', {email: inputUsername, password: inputPassword})
       if(response && response.data && response.data.status){
         const data = response.data.data
-        sessionStorage.setItem('loggedInUser', data.email)
+        localStorage.setItem('loggedInUser', data.email)
         setShowError('')
         history.push('/dashboard')
       }else{
@@ -73,6 +73,7 @@ export default function Login(props){
       </div>}
       <div style={{display: 'flex', justifyContent: 'center'}}>
       <input
+          value="Log In"
           className="form-item form-submit btn btn-primary"
           type="submit" disabled={loading ? true : false}
         />

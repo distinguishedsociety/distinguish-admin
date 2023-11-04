@@ -78,6 +78,14 @@ export const ViewOrder = () => {
             <p>Rs. {fetchedOrder.orderAmount} /-</p>
           </div>
           <div className='d-flex flex-row mb-2'>
+            <p className='col-2'>Coupon Code: </p>
+            <p>{fetchedOrder?.couponCode ? `${fetchedOrder?.couponCode}` : 'Not applied'}</p>
+          </div>
+          <div className='d-flex flex-row mb-2'>
+            <p className='col-2'>Coupon discount: </p>
+            <p>Rs. {fetchedOrder.discountPrice} /-</p>
+          </div>
+          <div className='d-flex flex-row mb-2'>
             <p className='col-2'>Order Date: </p>
             <p>
               <Moment local>

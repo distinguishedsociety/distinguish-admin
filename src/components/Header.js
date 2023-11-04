@@ -7,7 +7,7 @@ const Header = () => {
   const history = useHistory()
 
   const logout = () => {
-    sessionStorage.clear()
+    localStorage.clear()
     history.push('/login')
   }
 

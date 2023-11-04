@@ -33,7 +33,7 @@ export default function ForgotPassword() {
     }else{
         setShowError('')
     }
-    const email = sessionStorage.getItem('loggedInUser')
+    const email = localStorage.getItem('loggedInUser')
     const response = await axios.post('https://api.thedistinguishedsociety.com/internal/api/admin/admin-reset-password', {email: email, cPass: cPass, nPass: nPass})
     console.log('response',response)
     if(response && response.data && response.data.status){
@@ -41,7 +41,7 @@ export default function ForgotPassword() {
         toast(response.data.message);
         setShowError('')
         setTimeout(() => {
-          sessionStorage.clear()
+          localStorage.clear()
           history.push('/')
         },3000)
         setLoading(false)
@@ -57,7 +57,7 @@ export default function ForgotPassword() {
       <ToastContainer theme="dark" />
         <form
           className="addForm"
-          onSubmit={handleSubmit}
+          
         >
             <p style={{color: 'red', margin: '10px 0', textAlign: 'center'}}>{showError}</p>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -89,9 +89,9 @@ export default function ForgotPassword() {
               className="form-item"
               placeholder="Confrim Password"
             />
-            <div className="form-item form-submit btn btn-primary">
+            <div onClick={handleSubmit} className="form-item form-submit btn btn-primary">
             {isLoading ? <Loader/> : <input
-              type="submit"
+              type="button"
               className="btn btn-primary rest-password"
               value={'Update'}
               disabled={isLoading}

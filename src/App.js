@@ -42,7 +42,7 @@ const Sidebar = lazy(() => import("./components/Sidebar"));
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem('loggedInUser'));
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('loggedInUser'));
   
 
   const LoadingMessage = () => (
@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
 
     return () => {
-      sessionStorage.clear()
+      localStorage.clear()
     }
   })
 
