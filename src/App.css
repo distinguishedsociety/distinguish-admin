@@ -38,3 +38,10 @@
 .toast {
   /* padding: 2px; */
 }
+
+.error-msg{
+  color: red
+}
+.marginforError{
+  margin-left: 7px !important
+}

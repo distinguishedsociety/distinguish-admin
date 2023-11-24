@@ -116,6 +116,13 @@ export const SidebarData = [
         icon: 'lock_open',
         id: 'groups-menu',
         subMenuItems: []
+      },
+      {
+        title: 'Continent',
+        path: '/continent',
+        icon: 'south_america',
+        id: 'groups-menu',
+        subMenuItems: []
       }
     ],
   },

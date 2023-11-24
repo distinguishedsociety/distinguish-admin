@@ -33,6 +33,8 @@ import PublicRoute from "./components/PublicRoute";
 import Login from "./pages/Auth/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./pages/Auth/ResetPassword";
+import Continent from "./pages/Continent/Continent";
+import { AddContinent } from "./pages/Continent/AddContinent";
 
 
 
@@ -45,18 +47,11 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('loggedInUser'));
   
 
-  const LoadingMessage = () => (
+  const LoadingMessage = () => ( 
     <div className="loader-container">
       <div className="loader"></div>
     </div>
   );
-
-  useEffect(() => {
-
-    return () => {
-      localStorage.clear()
-    }
-  })
 
   return (
     <>
@@ -102,6 +97,8 @@ function App() {
         <PrivateRoute component={EditBlog} path="/view-blog/:id" isAuthenticated={isAuthenticated} />
         <PrivateRoute component={AddBlog} path="/add-blog" isAuthenticated={isAuthenticated} />
         <PrivateRoute component={IntroBanner} path="/intro-banner" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={Continent} path="/continent" isAuthenticated={isAuthenticated} />
+        <PrivateRoute component={AddContinent} path="/add-continent/:id?" isAuthenticated={isAuthenticated} />
         
           </Route>
         </Switch>
