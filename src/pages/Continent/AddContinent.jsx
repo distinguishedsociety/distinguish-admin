@@ -41,9 +41,10 @@ export const AddContinent = () => {
     try {
         let result;
         if(id){
+          const cur = (+data.currencyRate).toFixed(4)
             result = await axios.post(
                 "https://api.thedistinguishedsociety.com/internal/api/admin/update-continent",
-                {...data, id: id}
+                {...data,currencyRate: cur, id: id}
               );
         }else{
              result = await axios.post(
@@ -61,11 +62,11 @@ export const AddContinent = () => {
         
       } else {
         setLoading(false);
-        toast.error("Image upload failed!");
+        toast.error("something went wrong");
       }
     } catch (error) {
       setLoading(false);
-      toast.error("Error uploading image.");
+      toast.error("something went wrong");
     }
   };
 
