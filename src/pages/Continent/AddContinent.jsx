@@ -98,6 +98,7 @@ export const AddContinent = () => {
         className="form-item"
         {...register("currencyRate", { required: true })}
         placeholder="Currency Rate"
+        type='number'
         defaultValue={getValues('currencyRate')} 
       />
       {errors.currencyRate ? <span className="error-msg marginforError">Currency Rate is required</span> : <span > <div className='marginforError' style={{padding: '5px',margin: '5px'}}>
