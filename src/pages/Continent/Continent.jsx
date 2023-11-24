@@ -88,7 +88,7 @@ export default function Continent(){
                 <TableCell align="center" className="p-2 flex">
                   <div style={{display: 'flex', columnGap: '5px', justifyContent: 'center'}} ><div>Currency Rate </div>
                   <HtmlTooltip title={
-                    <div style={{padding: '5px',margin: '5px'}}>
+                    <div className='marginforError' style={{padding: '5px',margin: '5px'}}>
                       <p style={{paddingLeft: '5px'}}>This is a value of 1 INR in respective currency.</p>
                       <a href='https://www.google.com/search?q=1+inr+to+usd&oq=1+inr+&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIGCAYQRRg8MgYIBxBFGDzSAQg1MDIwajFqN6gCALACAA&sourceid=chrome&ie=UTF-8' target='_blank'>Click Here To See The Example</a>
                     </div>
