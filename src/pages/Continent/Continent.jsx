@@ -36,7 +36,10 @@ export default function Continent(){
           "https://api.thedistinguishedsociety.com/internal/api/admin/get-continent"
         );
         if(result.data.status == 'success'){
-          setData(result.data.data)
+          const newData = result.data.data.map(item => {
+            return {...item, name:item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+          })
+          setData(newData)
         }
       }catch(e){
 
@@ -101,6 +104,9 @@ export default function Continent(){
                 <TableCell align="center" className="p-2">
                   Edit
                 </TableCell>
+                <TableCell align="center" className="p-2">
+                  Delete
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody className="p-4 m-4">
@@ -122,7 +128,9 @@ export default function Continent(){
                     <Link to={`/add-continent/${item._id}`}>
                       <MdOutlineModeEditOutline className="icon" />
                     </Link>
-                    <MdDeleteOutline  className="icon"style={{color: 'red', cursor: 'pointer', marginRight: '5px'}} onClick={() => deleteContinent(item._id)} />
+                  </TableCell>
+                  <TableCell align="center" className="p-2">
+                  <MdDeleteOutline  className="icon"style={{color: 'red', cursor: 'pointer'}} onClick={() => deleteContinent(item._id)} />
                   </TableCell>
                 </TableRow>
               ))}

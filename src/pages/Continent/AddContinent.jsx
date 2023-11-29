@@ -100,7 +100,7 @@ export const AddContinent = () => {
         placeholder="Currency Rate"
         type='number'
         defaultValue={getValues('currencyRate')}
-        step="0.0001"
+        step="any"
       />
       {errors.currencyRate ? <span className="error-msg marginforError">Currency Rate is required</span> : <span > <div className='marginforError' style={{padding: '5px',margin: '5px'}}>
                       <p style={{paddingLeft: '5px'}}>This is a value of 1 INR in respective currency.</p>
