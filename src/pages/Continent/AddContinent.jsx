@@ -57,7 +57,7 @@ export const AddContinent = () => {
       if (result.data.status === 'success') {
         
           setLoading(false);
-          toast.success("Blog created successfully!");
+          toast.success("Continent created successfully!");
           history.push("/continent");
         
       } else {
@@ -66,7 +66,11 @@ export const AddContinent = () => {
       }
     } catch (error) {
       setLoading(false);
-      toast.error("something went wrong");
+      if(error?.response.data){
+        toast.error(error?.response?.data?.message)
+      }else{
+        toast.error("something went wrong");
+      }
     }
   };
 
