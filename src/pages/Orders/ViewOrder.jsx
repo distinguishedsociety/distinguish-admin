@@ -75,7 +75,7 @@ export const ViewOrder = () => {
           </div>
           <div className='d-flex flex-row mb-2'>
             <p className='col-2'>Order Amount: </p>
-            <p>Rs. {fetchedOrder.orderAmount} /-</p>
+            <p>{fetchedOrder.currCode ? fetchedOrder.currCode : 'Rs.'} {(fetchedOrder?.orderAmount)} </p>
           </div>
           <div className='d-flex flex-row mb-2'>
             <p className='col-2'>Coupon Code: </p>
@@ -83,7 +83,7 @@ export const ViewOrder = () => {
           </div>
           <div className='d-flex flex-row mb-2'>
             <p className='col-2'>Coupon discount: </p>
-            <p>Rs. {fetchedOrder.discountPrice} /-</p>
+            <p>{fetchedOrder.currCode ? fetchedOrder.currCode : 'Rs.'} {(fetchedOrder.discountPrice * fetchedOrder?.currRate).toFixed(2)} </p>
           </div>
           <div className='d-flex flex-row mb-2'>
             <p className='col-2'>Order Date: </p>
@@ -120,6 +120,10 @@ export const ViewOrder = () => {
             <div className='d-flex flex-row mb-4'>
               <p className='col-2'>Phone number: </p>
               <p>{fetchedOrder.shippingDetails.phoneNumber}</p>
+            </div>
+            <div className='d-flex flex-row mb-4'>
+              <p className='col-2'>Email Address: </p>
+              <p>{fetchedOrder.shippingDetails.email}</p>
             </div>
             <div className='d-flex flex-row mb-4'>
               <p className='col-2'>Address </p>
